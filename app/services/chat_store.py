@@ -17,6 +17,11 @@ def chats_dir() -> Path:
     return root_dir() / "data" / "chats"
 
 
+def session_path(session_id: str) -> Path:
+    """Local JSON file for one agent session."""
+    return _path(session_id)
+
+
 def start_session() -> str:
     """Create an empty session file and return its id."""
     session_id = uuid.uuid4().hex

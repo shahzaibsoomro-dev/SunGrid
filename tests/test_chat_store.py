@@ -30,8 +30,9 @@ class ChatStoreTest(unittest.TestCase):
             ["user", "assistant"],
         )
         self.assertEqual(messages[0]["content"], "What is the rooftop rebate?")
-        saved = json.loads((Path(self._tmpdir.name) / f"{session_id}.json").read_text(encoding="utf-8"))
+        saved = json.loads(chat_store.session_path(session_id).read_text(encoding="utf-8"))
         self.assertEqual(saved["session_id"], session_id)
+        self.assertEqual(chat_store.session_path(session_id).parent, Path(self._tmpdir.name))
 
     def test_missing_session_is_rejected(self) -> None:
         with self.assertRaises(FileNotFoundError):
