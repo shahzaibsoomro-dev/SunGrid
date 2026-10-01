@@ -1,0 +1,15 @@
+from app.llm.client import complete
+import asyncio
+import time
+
+
+async def main():
+    start_time = time.time()
+    response = await complete("What is 22+223? give me the answer in a single line")
+    end_time = time.time()
+    print(f"Time taken: {end_time - start_time} seconds")
+    return response
+
+if __name__ == "__main__":
+    response = asyncio.run(main())
+    print(response)
