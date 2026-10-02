@@ -13,47 +13,84 @@ and is forwarded to the API as-is, for example:
 Pass only settings the chosen model accepts. A model that does not support
 one of these will reject the request. async_llm_stream always sets stream=True,
 so do not pass stream yourself.
+
+llm and async_llm return {"result": ...}.
+A text reply is a string. A tool call is a list of function_call objects.
+The caller tells those two shapes apart.
+
+A failed request raises. Connection and HTTP errors come from the SDK.
+A response whose status is failed or cancelled, or which carries an error
+object, raises RuntimeError with the API message. Nothing is returned in
+that case, so the caller does not save it.
 """
 
 from collections.abc import AsyncIterator
+from openai import AsyncOpenAI, OpenAI
+from app.config import get_env
+from app.llm.messages import to_llm_input
 from typing import Any
 
-from openai import AsyncOpenAI, OpenAI
 
-from app.config import get_env
+def _response_json(response: Any) -> dict[str, Any]:
+    """Return a text reply as a string, or tool calls as a list."""
+    data = response.model_dump(mode="json")
+    status = data.get("status")
+    error = data.get("error")
+    if status in {"failed", "cancelled"} or error:
+        message = error.get("message") if isinstance(error, dict) else None
+        raise RuntimeError(message or f"Model response {status or 'failed'}.")
+
+    output = data.get("output") or []
+    tool_calls = [
+        {
+            "type": "function_call",
+            "call_id": item.get("call_id"),
+            "name": item.get("name"),
+            "arguments": item.get("arguments"),
+        }
+        for item in output
+        if item.get("type") == "function_call"
+    ]
+    if tool_calls:
+        return {"result": tool_calls}
+
+    parts: list[str] = []
+    for item in output:
+        if item.get("type") != "message":
+            continue
+        for block in item.get("content") or []:
+            if block.get("type") == "output_text" and block.get("text"):
+                parts.append(block["text"])
+    return {"result": "".join(parts).strip()}
 
 
-def llm(messages: list[dict[str, str]], model: str, **kwargs: Any) -> str:
-    """Send messages to the model and return the full reply."""
+def llm(messages: list[dict[str, Any]], model: str, **kwargs: Any) -> dict[str, Any]:
+    """Send messages to the model and return the reply string or tool calls."""
     client = OpenAI(base_url=get_env("OPENAI_API_BASE"), api_key=get_env("OPENAI_API_KEY"))
     try:
-        response = client.responses.create(model=model, input=_to_input(messages), **kwargs)
-        return response.output_text
+        response = client.responses.create(model=model, input=to_llm_input(messages), **kwargs)
+        return _response_json(response)
     finally:
         client.close()
 
 
-async def async_llm(messages: list[dict[str, str]], model: str, **kwargs: Any) -> str:
-    """Send messages to the model without blocking, and return the full reply."""
+async def async_llm(messages: list[dict[str, Any]], model: str, **kwargs: Any) -> dict[str, Any]:
+    """Send messages without blocking and return the reply string or tool calls."""
     client = AsyncOpenAI(base_url=get_env("OPENAI_API_BASE"), api_key=get_env("OPENAI_API_KEY"))
     try:
-        response = await client.responses.create(model=model, input=_to_input(messages), **kwargs)
-        return response.output_text
+        response = await client.responses.create(model=model, input=to_llm_input(messages), **kwargs)
+        return _response_json(response)
     finally:
         await client.close()
 
 
-async def async_llm_stream(
-    messages: list[dict[str, str]],
-    model: str,
-    **kwargs: Any,
-) -> AsyncIterator[str]:
+async def async_llm_stream(messages: list[dict[str, Any]], model: str, **kwargs: Any) -> AsyncIterator[str]:
     """Stream reply text from the model, one piece at a time."""
     client = AsyncOpenAI(base_url=get_env("OPENAI_API_BASE"), api_key=get_env("OPENAI_API_KEY"))
     try:
         stream = await client.responses.create(
             model=model,
-            input=_to_input(messages),
+            input=to_llm_input(messages),
             stream=True,
             **kwargs,
         )
@@ -64,6 +101,3 @@ async def async_llm_stream(
         await client.close()
 
 
-def _to_input(messages: list[dict[str, str]]) -> list[dict[str, str]]:
-    """Keep role and content. Stored turns also carry a timestamp the API does not accept."""
-    return [{"role": message["role"], "content": message["content"]} for message in messages]

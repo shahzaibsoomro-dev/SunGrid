@@ -5,11 +5,11 @@ import re
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 from app.config import root_dir
 
 _SESSION_ID = re.compile(r"^[0-9a-f]{32}$")
-_ROLES = {"user", "assistant"}
 
 
 def chats_dir() -> Path:
@@ -29,30 +29,20 @@ def start_session() -> str:
     return session_id
 
 
-def append_message(session_id: str, role: str, content: str) -> None:
-    """Append one user or assistant turn to an existing session."""
-    if role not in _ROLES:
-        raise ValueError("role must be 'user' or 'assistant'.")
-    text = content.strip()
-    if not text:
-        raise ValueError("message content is empty.")
-
+def append_message(session_id: str, message: dict[str, Any]) -> None:
+    """Append one turn as given, plus the time it was saved."""
     path = _path(session_id)
     if not path.is_file():
         raise FileNotFoundError(f"No chat file for session {session_id}.")
 
+    stored = dict(message)
+    stored["at"] = datetime.now(timezone.utc).isoformat()
     payload = json.loads(path.read_text(encoding="utf-8"))
-    payload["messages"].append(
-        {
-            "role": role,
-            "content": text,
-            "at": datetime.now(timezone.utc).isoformat(),
-        }
-    )
+    payload["messages"].append(stored)
     _write(path, payload)
 
 
-def load_messages(session_id: str) -> list[dict[str, str]]:
+def load_messages(session_id: str) -> list[dict[str, Any]]:
     """Return the saved turns for one agent session, oldest first."""
     path = _path(session_id)
     if not path.is_file():

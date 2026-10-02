@@ -20,8 +20,11 @@ class ChatStoreTest(unittest.TestCase):
 
     def test_session_file_keeps_turns_in_order(self) -> None:
         session_id = chat_store.start_session()
-        chat_store.append_message(session_id, "user", "What is the rooftop rebate?")
-        chat_store.append_message(session_id, "assistant", "It is $0.40 per watt, capped at $4,000.")
+        chat_store.append_message(session_id, {"role": "user", "content": "What is the rooftop rebate?"})
+        chat_store.append_message(
+            session_id,
+            {"role": "assistant", "content": "It is $0.40 per watt, capped at $4,000."},
+        )
 
         messages = chat_store.load_messages(session_id)
 
@@ -34,9 +37,29 @@ class ChatStoreTest(unittest.TestCase):
         self.assertEqual(saved["session_id"], session_id)
         self.assertEqual(chat_store.session_path(session_id).parent, Path(self._tmpdir.name))
 
+    def test_tool_turn_is_saved_with_the_conversation(self) -> None:
+        session_id = chat_store.start_session()
+        chat_store.append_message(
+            session_id,
+            {
+                "result": [{"type": "function_call", "call_id": "call_1"}],
+            },
+        )
+        chat_store.append_message(
+            session_id,
+            {"type": "function_call_output", "call_id": "call_1", "output": '{"eligible": true}'},
+        )
+
+        messages = chat_store.load_messages(session_id)
+
+        self.assertEqual(messages[0]["result"][0]["call_id"], "call_1")
+        self.assertNotIn("metadata", messages[0])
+        self.assertEqual(messages[1]["type"], "function_call_output")
+        self.assertIn("at", messages[0])
+
     def test_missing_session_is_rejected(self) -> None:
         with self.assertRaises(FileNotFoundError):
-            chat_store.append_message("a" * 32, "user", "hello")
+            chat_store.append_message("a" * 32, {"role": "user", "content": "hello"})
 
 
 if __name__ == "__main__":

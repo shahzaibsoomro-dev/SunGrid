@@ -1,8 +1,15 @@
-from app.config import get_env
-from app.services.chat_store import append_message, load_messages, session_path, start_session
-from openai import APIConnectionError, APIError
-from app.llm.client import async_llm_stream
 import asyncio
+import json
+
+from openai import APIConnectionError, APIError
+
+from app.config import get_env
+from app.llm.client import async_llm
+from app.llm.prompt import SYSTEM_PROMPT
+from app.services.chat_store import append_message, load_messages, session_path, start_session
+from app.services.tools import TOOLS, run_tool
+
+MAX_TOOL_ROUNDS = 3
 
 
 async def run() -> None:
@@ -10,6 +17,7 @@ async def run() -> None:
     session_id = start_session()
     path = session_path(session_id)
     model = get_env("OPENAI_DEPLOYMENT_NAME")
+    append_message(session_id, {"role": "system", "content": SYSTEM_PROMPT})
     print(f"Session file: {path}")
     print("Type a message. Type exit to stop.")
 
@@ -21,25 +29,40 @@ async def run() -> None:
             print(f"Chat saved at {path}")
             return
 
-        append_message(session_id, "user", user_text)
-        print("\nAgent: ", end="", flush=True)
-        parts: list[str] = []
+        append_message(session_id, {"role": "user", "content": user_text})
+        messages = load_messages(session_id)
         try:
-            async for delta in async_llm_stream(load_messages(session_id), model):
-                parts.append(delta)
-                print(delta, end="", flush=True)
-        except (APIError, APIConnectionError) as exc:
+            for round_index in range(MAX_TOOL_ROUNDS + 1):
+                response = await async_llm(messages, model, tools=TOOLS)
+                messages.append(response)
+                append_message(session_id, response)
+                result = response["result"]
+
+                if isinstance(result, str):
+                    if not result:
+                        print("\nThe model returned an empty reply.")
+                        break
+                    print(f"\nAgent: {result}")
+                    break
+
+                if round_index == MAX_TOOL_ROUNDS:
+                    print("\nAgent: I stopped because the tool calls did not finish.")
+                    break
+
+                for call in result:
+                    raw_arguments = call.get("arguments") or "{}"
+                    arguments = json.loads(raw_arguments) if isinstance(raw_arguments, str) else raw_arguments
+                    print(f"\nCalling {call['name']} {arguments}")
+                    tool_message = {
+                        "type": "function_call_output",
+                        "call_id": call["call_id"],
+                        "output": run_tool(call["name"], arguments),
+                    }
+                    print(f"Tool result: {tool_message['output']}")
+                    messages.append(tool_message)
+                    append_message(session_id, tool_message)
+        except (APIError, APIConnectionError, RuntimeError) as exc:
             print(f"\nThe model call failed: {exc}")
-            continue
-        print()
-
-        reply = "".join(parts).strip()
-        if not reply:
-            print("The model returned an empty reply. Nothing new was saved for the agent.")
-            continue
-
-        append_message(session_id, "assistant", reply)
-   
 
 
 def main() -> None:
