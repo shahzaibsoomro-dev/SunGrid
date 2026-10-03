@@ -1,0 +1,92 @@
+{
+  "session_id": "c468e0aaf682499280a0203bfdfb2dab",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the SunGrid Cooperative member-support copilot.\n\nHelp members with program policies, rebates, billing, installation, and company updates. Use only the conversation and tool results. If a fact was not given to you, say so. Do not invent dollar amounts, ZIP codes, rates, or dates.\n\nEvery reply is one JSON object and nothing else. It has three fields: reasoning, intent, and action.\n\nintent is exactly one of:\n- Program Policies\n- Incentive & Rebate Programs\n- Billing & Account\n- Technical/Installation Guidance\n- Company Updates\n- non_relevant\n\naction is either the reply the member reads, or one tool call. Use this shape for a reply:\n{\"reasoning\": \"short notes on how you decided\", \"intent\": \"Billing & Account\", \"action\": {\"type\": \"response\", \"text\": \"what the member reads\"}}\n\nUse this shape for the eligibility tool:\n{\"reasoning\": \"short notes\", \"intent\": \"Incentive & Rebate Programs\", \"action\": {\"type\": \"tool_call\", \"name\": \"check_rebate_eligibility\", \"arguments\": {\"household_zip\": \"94103\", \"annual_income_usd\": 80000, \"system_size_kw\": 5, \"installer_approved\": true}}}\n\nCall check_rebate_eligibility only when intent is Incentive & Rebate Programs and the member has given all four facts: household ZIP, annual income in USD, system size in kW, and whether the installer is approved. If any fact is missing, ask for it with a response. Do not guess.\n\nCommercial incentives, the battery add-on, the low-income bill credit, appeals, and a general explanation of the rebate rules stay on intent Incentive & Rebate Programs and use a response. Do not call the tool for those.\n\nAfter a tool result is in the conversation, the next reply uses a response action. If that result says the household is not eligible, the rebate is $0. Do not estimate what they would have received.\n\nQuestions outside SunGrid member support use intent non_relevant and a one-sentence response.\n",
+      "at": "2026-10-03T14:55:08.886123+00:00"
+    },
+    {
+      "role": "user",
+      "content": "I'm in 94103, income is $80,000, the system is 5 kW, and my installer is approved. Am I eligible, and for how much?",
+      "at": "2026-10-03T14:55:49.771389+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "All four required details provided; use eligibility tool to confirm and amount.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "tool_call",
+          "name": "check_rebate_eligibility",
+          "arguments": {
+            "household_zip": "94103",
+            "annual_income_usd": 80000,
+            "system_size_kw": 5,
+            "installer_approved": true
+          }
+        }
+      },
+      "at": "2026-10-03T14:55:55.545549+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "check_rebate_eligibility",
+      "content": "{\"eligible\": true, \"reason\": \"All eligibility checks passed.\", \"estimated_rebate_usd\": 2000.0}",
+      "at": "2026-10-03T14:55:55.547386+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "Tool result shows eligible=true with an estimated rebate; per instructions, respond with confirmation and amount.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "response",
+          "text": "Good news\u2014you\u2019re eligible. Your estimated rebate is $2,000. Reason: All eligibility checks passed. Would you like help with the application steps?"
+        }
+      },
+      "at": "2026-10-03T14:56:03.580972+00:00"
+    },
+    {
+      "role": "user",
+      "content": "Same home, but the system is 10 kW.",
+      "at": "2026-10-03T14:58:42.596566+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "All four facts are known; re-check eligibility with updated 10 kW system size.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "tool_call",
+          "name": "check_rebate_eligibility",
+          "arguments": {
+            "household_zip": "94103",
+            "annual_income_usd": 80000,
+            "system_size_kw": 10,
+            "installer_approved": true
+          }
+        }
+      },
+      "at": "2026-10-03T14:58:48.122608+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "check_rebate_eligibility",
+      "content": "{\"eligible\": true, \"reason\": \"All eligibility checks passed.\", \"estimated_rebate_usd\": 4000.0}",
+      "at": "2026-10-03T14:58:48.125247+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "Tool result indicates eligibility with an estimated rebate; provide confirmation and amount.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "response",
+          "text": "Great news\u2014you\u2019re eligible. Your estimated rebate is $4,000. Reason: All eligibility checks passed. Would you like help with the application steps?"
+        }
+      },
+      "at": "2026-10-03T14:58:53.020961+00:00"
+    }
+  ]
+}

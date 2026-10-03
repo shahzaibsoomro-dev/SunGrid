@@ -1,0 +1,177 @@
+{
+  "session_id": "0e88bd03f1cf4fb6a7f0921d29018c81",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the SunGrid Cooperative member-support copilot.\n\nHelp members with program policies, rebates, billing, installation, and company updates. You are SunGrid Cooperative. Say that when someone asks who you are or the company name. That does not need a tool.\n\nUse a tool only when the answer depends on it. Do not invent dollar amounts, ZIP codes, rates, dates, or policy rules. If a document did not say it, say you do not have that fact. A member-facing fact from the documents must name the source file it came from.\n\nThe knowledge base can answer questions in these areas:\n- Program Policies: membership tiers, grievances, privacy, installer rules, voting\n- Incentive & Rebate Programs: rooftop rebate rules, battery incentive, low-income credit, appeals, paperwork\n- Billing & Account: how bills are calculated, fees, due dates, autopay, true-up, disputes\n- Technical/Installation Guidance: site assessment, inverters, interconnection, fault codes, battery installation\n- Company Updates: newsletters and the annual report, which are not eligibility rules\n\nA short question in one of those areas is enough. Retrieve it. Do not ask the member to rephrase it into our category names first.\n\nEvery reply is one JSON object and nothing else. No markdown fences, and no text before or after the object. It has three fields: reasoning, intent, and action.\n\nintent is exactly one of:\n- Program Policies\n- Incentive & Rebate Programs\n- Billing & Account\n- Technical/Installation Guidance\n- Company Updates\n- non_relevant\n\naction is either the reply the member reads, or one tool call. Use this shape for a reply:\n{\"reasoning\": \"short notes on how you decided\", \"intent\": \"Billing & Account\", \"action\": {\"type\": \"response\", \"text\": \"what the member reads\"}}\n\nCall retrieve_knowledge only when the member asks for a rule, amount, date, process, or news item that has to come from the documents. Use this shape:\n{\"reasoning\": \"short notes\", \"intent\": \"Billing & Account\", \"action\": {\"type\": \"tool_call\", \"name\": \"retrieve_knowledge\", \"arguments\": {\"query\": \"when are bills due and when does autopay charge\", \"categories\": [\"Billing & Account\"]}}}\n\nretrieve_knowledge searches the internal SunGrid documents. categories filters on chunk categories and must include your intent. Each category is one of: Program Policies, Incentive & Rebate Programs, Billing & Account, Technical/Installation Guidance, Company Updates. The tool returns only chunks that matched closely. Each chunk has text, section, and source. State only what that text says, and name the source file in the reply. If the tool returns no chunks, say the documents do not cover it. Do not fill the gap from memory. Do not use section categories. Do not call this tool for the company name, greetings, or a question you can answer from the conversation alone.\n\nUse this shape for the eligibility tool:\n{\"reasoning\": \"short notes\", \"intent\": \"Incentive & Rebate Programs\", \"action\": {\"type\": \"tool_call\", \"name\": \"check_rebate_eligibility\", \"arguments\": {\"household_zip\": \"94103\", \"annual_income_usd\": 80000, \"system_size_kw\": 5, \"installer_approved\": true}}}\n\nCall check_rebate_eligibility only when intent is Incentive & Rebate Programs and the member has given all four facts: household ZIP, annual income in USD, system size in kW, and whether the installer is approved. If any fact is missing, ask for it with a response. Do not guess. The yes/no and the dollar amount come only from that tool.\n\nCommercial incentives, the battery add-on, the low-income bill credit, appeals, and a general explanation of the rebate rules stay on intent Incentive & Rebate Programs. Retrieve for those. Do not call check_rebate_eligibility.\n\nYou may retrieve and then call check_rebate_eligibility when both are needed. After the tools you need have returned, the next reply is a response. If an eligibility result says the household is not eligible, the rebate is $0. Do not estimate what they would have received.\n\nQuestions outside SunGrid member support use intent non_relevant and a one-sentence response. Do not retrieve.\n",
+      "at": "2026-10-03T18:39:26.528303+00:00"
+    },
+    {
+      "role": "user",
+      "content": "What size systems qualify for the rooftop rebate",
+      "at": "2026-10-03T18:39:27.331179+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "Member asked for a specific rebate rule (system size). Must retrieve from Incentive & Rebate Programs docs.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "tool_call",
+          "name": "retrieve_knowledge",
+          "arguments": {
+            "query": "What system sizes qualify for the rooftop rebate (minimum and maximum kW)",
+            "categories": [
+              "Incentive & Rebate Programs"
+            ]
+          }
+        }
+      },
+      "at": "2026-10-03T18:39:31.964246+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "retrieve_knowledge",
+      "content": "[{\"text\": \"rooftop rebate program\\nhousehold-tier members installing a new rooftop system are eligible for a rebate of $0.40/watt, capped at $4,000 per household, subject to the following eligibility rules:\\n\\n- system size must be between 3kw and 10kw.\\n- household must be within the sungrid service region (see approved zip code list, appendix a \\u2014 not included in this excerpt).\\n- household adjusted gross income must fall below the regional threshold published annually by the cooperative board.\\n- systems installed by non-approved installers are not eligible, regardless of other criteria.\\n\\nincome threshold and system size are hard eligibility requirements checked before any rebate amount is calculated \\u2014 a household that fails either check receives no rebate, regardless of how favorable other factors are.\", \"section\": \"sungrid cooperative \\u2014 incentive & rebate programs > rooftop rebate program\", \"source\": \"02_incentive_rebate_programs.md\"}, {\"text\": \"eligibility\\n- the associated rooftop system must have an approved rooftop rebate program determination on file.\\n- battery installation must be performed by a sungrid-approved installer meeting the certification requirements described in the installer certification & renewal document.\\n- battery systems must meet the technical requirements described in the technical & installation guidance materials for battery storage.\", \"section\": \"sungrid cooperative \\u2014 battery storage add-on incentive > eligibility\", \"source\": \"09_battery_storage_incentive.md\"}, {\"text\": \"commercial incentive program\\ncommercial-tier members installing systems above 25kw are eligible for a separate performance-based incentive, paid quarterly based on metered output rather than a one-time rebate. commercial incentive requests are reviewed by sungrid's carbon markets desk (a separate approval workflow from the rooftop rebate program).\", \"section\": \"sungrid cooperative \\u2014 incentive & rebate programs > commercial incentive program\", \"source\": \"02_incentive_rebate_programs.md\"}]",
+      "at": "2026-10-03T18:39:33.381495+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "They asked for a specific rebate rule (system size). I retrieved the Incentive & Rebate Programs doc and found the exact size range and that it\u2019s a hard eligibility requirement.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "response",
+          "text": "Systems between 3 kW and 10 kW qualify for the rooftop rebate. This size range is a hard eligibility requirement. Source: 02_incentive_rebate_programs.md."
+        }
+      },
+      "at": "2026-10-03T18:39:39.810116+00:00"
+    },
+    {
+      "role": "user",
+      "content": "ZIP 94103, income $80,000, 5 kW, approved installer. Am I eligible?",
+      "at": "2026-10-03T18:40:02.937277+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "Member provided all four required facts for eligibility check; per instructions, use the eligibility tool to get the yes/no and amount.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "tool_call",
+          "name": "check_rebate_eligibility",
+          "arguments": {
+            "household_zip": "94103",
+            "annual_income_usd": 80000,
+            "system_size_kw": 5,
+            "installer_approved": true
+          }
+        }
+      },
+      "at": "2026-10-03T18:40:08.957074+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "check_rebate_eligibility",
+      "content": "{\"eligible\": true, \"reason\": \"All eligibility checks passed.\", \"estimated_rebate_usd\": 2000.0}",
+      "at": "2026-10-03T18:40:08.959980+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "All four facts were provided and we ran the eligibility tool, which returned eligibility true and an estimated amount. Provide a concise confirmation without adding uncited details.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "response",
+          "text": "Yes - you're eligible. Based on the details you provided (ZIP 94103, income $80,000, 5 kW system, approved installer), your estimated rooftop rebate is $2,000. Would you like help with the application steps?"
+        }
+      },
+      "at": "2026-10-03T18:40:20.563459+00:00"
+    },
+    {
+      "role": "user",
+      "content": "What if that installer lets their certification lapse before the job is finished?",
+      "at": "2026-10-03T18:40:33.571478+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "This is a specific eligibility/policy scenario about installer approval status timing. Must retrieve exact rule from docs. Search both Incentive & Rebate Programs and Program Policies.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "tool_call",
+          "name": "retrieve_knowledge",
+          "arguments": {
+            "query": "If an installer loses or lets their SunGrid approval/certification lapse before the rooftop job is completed or before rebate approval, does the household still qualify for the rooftop rebate? At what project stage must the installer be approved (contract date, installation date, final inspection, rebate application, PTO)?",
+            "categories": [
+              "Incentive & Rebate Programs",
+              "Program Policies"
+            ]
+          }
+        }
+      },
+      "at": "2026-10-03T18:40:40.886590+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "retrieve_knowledge",
+      "content": "[{\"text\": \"documentation requirements\\napplicants must submit proof of installer approval status, a copy of the interconnection application filed with the local utility, and a signed income attestation. incomplete applications are held in a pending queue for up to 15 business days before being automatically closed; applicants must reapply after closure.\", \"section\": \"sungrid cooperative \\u2014 incentive & rebate programs > documentation requirements\", \"source\": \"02_incentive_rebate_programs.md\"}, {\"text\": \"annual renewal\\nsafety certification must be renewed annually. installers who allow certification to lapse are automatically removed from the approved installer list until renewal is complete; any jobs completed during a lapsed period are treated as performed by a non-approved installer for rebate eligibility purposes, regardless of the installer's certification history before the lapse.\", \"section\": \"sungrid cooperative \\u2014 installer certification & renewal > annual renewal\", \"source\": \"07_installer_certification.md\"}, {\"text\": \"certification requirements\\ninstallers must hold a valid state electrical license and complete sungrid's safety certification course before being added to the approved installer list. certification is specific to the installer license holder, not the installing company as a whole \\u2014 each individual electrician working on sungrid jobs must be separately certified.\", \"section\": \"sungrid cooperative \\u2014 installer certification & renewal > certification requirements\", \"source\": \"07_installer_certification.md\"}, {\"text\": \"rooftop rebate program\\nhousehold-tier members installing a new rooftop system are eligible for a rebate of $0.40/watt, capped at $4,000 per household, subject to the following eligibility rules:\\n\\n- system size must be between 3kw and 10kw.\\n- household must be within the sungrid service region (see approved zip code list, appendix a \\u2014 not included in this excerpt).\\n- household adjusted gross income must fall below the regional threshold published annually by the cooperative board.\\n- systems installed by non-approved installers are not eligible, regardless of other criteria.\\n\\nincome threshold and system size are hard eligibility requirements checked before any rebate amount is calculated \\u2014 a household that fails either check receives no rebate, regardless of how favorable other factors are.\", \"section\": \"sungrid cooperative \\u2014 incentive & rebate programs > rooftop rebate program\", \"source\": \"02_incentive_rebate_programs.md\"}, {\"text\": \"this document covers what happens when a previously approved rooftop rebate is later reversed due to an eligibility error discovered after disbursement (e.g., an installer later found to be non-approved, or a household later found to exceed the income threshold).\", \"section\": \"sungrid cooperative \\u2014 rebate refund & billing adjustment notice\", \"source\": \"06_ambiguous_rebate_billing_adjustments.md\"}]",
+      "at": "2026-10-03T18:40:41.780056+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "Member asked about installer approval lapse and rebate eligibility timing. Retrieved rules show jobs completed during a lapse are treated as non-approved, rooftop rebate requires approved installer, documentation proof needed, and rebates can be reversed if eligibility errors found later.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "response",
+          "text": "If an installer\u2019s certification lapses, they are removed from the approved list, and any jobs completed during the lapsed period are treated as performed by a non\u2011approved installer for rebate eligibility purposes. Systems installed by non\u2011approved installers are not eligible for the rooftop rebate. Source: 07_installer_certification.md; 02_incentive_rebate_programs.md.\n\nThe documents state that the key trigger is whether the job is completed during the lapsed period. If certification is renewed before completion and the job is completed while the installer is approved, it would not be considered completed during a lapse. You must submit proof of installer approval status with your application. Source: 02_incentive_rebate_programs.md (documentation requirements).\n\nNote: If a rebate is paid and it\u2019s later found the installer was non\u2011approved at completion, SunGrid may reverse the rebate due to eligibility error. Source: 06_ambiguous_rebate_billing_adjustments.md.\n\nIf you want, I can help you confirm your installer\u2019s current approval status before you schedule final completion."
+        }
+      },
+      "at": "2026-10-03T18:40:58.354335+00:00"
+    },
+    {
+      "role": "user",
+      "content": "The rebate was already paid and then reversed because of that lapse. How many months can the payback be spread over, and do I appeal it as a billing grievance?",
+      "at": "2026-10-03T18:41:00.771571+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "They\u2019re asking for specific rules on repayment terms and the correct appeal/grievance path after a rebate reversal. Must retrieve from docs across incentives, billing, and policies.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "tool_call",
+          "name": "retrieve_knowledge",
+          "arguments": {
+            "query": "rebate refund repayment terms after reversal: how many months can members spread payback over? is this handled as a billing plan and what are the available installment lengths, interest/fees? Which process is used to contest a reversal: appeal the incentive determination or file a billing grievance? steps and timelines.",
+            "categories": [
+              "Incentive & Rebate Programs",
+              "Billing & Account",
+              "Program Policies"
+            ]
+          }
+        }
+      },
+      "at": "2026-10-03T18:41:09.797215+00:00"
+    },
+    {
+      "role": "tool",
+      "name": "retrieve_knowledge",
+      "content": "[{\"text\": \"which team handles this?\\nbecause this scenario touches both rebate eligibility (a determination made under the incentive & rebate programs process) and monthly billing mechanics (governed by standard billing cycle rules), it does not sit cleanly under either the incentive & rebate programs document or the billing & account faqs document alone. in practice, the incentive program committee makes the reversal determination, and the billing team executes the adjustment schedule.\", \"section\": \"sungrid cooperative \\u2014 rebate refund & billing adjustment notice > which team handles this?\", \"source\": \"06_ambiguous_rebate_billing_adjustments.md\"}, {\"text\": \"reversal process\\nwhen a rebate is reversed, sungrid issues a billing adjustment to recover the disbursed amount. the adjustment is applied over up to 6 monthly billing cycles rather than as a single lump charge, to reduce hardship on the affected household.\", \"section\": \"sungrid cooperative \\u2014 rebate refund & billing adjustment notice > reversal process\", \"source\": \"06_ambiguous_rebate_billing_adjustments.md\"}, {\"text\": \"member notification\\naffected members are notified in writing at least 30 days before the first adjusted billing cycle and may appeal the reversal determination through the incentive program appeals process described in the incentive & rebate programs document \\u2014 not through the general member grievance procedure.\", \"section\": \"sungrid cooperative \\u2014 rebate refund & billing adjustment notice > member notification\", \"source\": \"06_ambiguous_rebate_billing_adjustments.md\"}, {\"text\": \"appeals process\\nmembers disputing a rebate eligibility determination may appeal within 30 days of the determination. appeals are reviewed by the incentive program committee, separate from the general member grievance procedure described in the program policies document.\", \"section\": \"sungrid cooperative \\u2014 incentive & rebate programs > appeals process\", \"source\": \"02_incentive_rebate_programs.md\"}, {\"text\": \"this document covers what happens when a previously approved rooftop rebate is later reversed due to an eligibility error discovered after disbursement (e.g., an installer later found to be non-approved, or a household later found to exceed the income threshold).\", \"section\": \"sungrid cooperative \\u2014 rebate refund & billing adjustment notice\", \"source\": \"06_ambiguous_rebate_billing_adjustments.md\"}]",
+      "at": "2026-10-03T18:41:11.290304+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "They asked for specific repayment terms and the correct appeal path after a rebate reversal. We retrieved the reversal policy and appeals rules and will cite sources.",
+        "intent": "Incentive & Rebate Programs",
+        "action": {
+          "type": "response",
+          "text": "Repayment schedule: Reversed rebates are recovered as billing adjustments spread over up to 6 monthly billing cycles (not a lump sum). Source: 06_ambiguous_rebate_billing_adjustments.md.\n\nHow to appeal: Do not file this as a billing grievance. You should appeal the reversal through the Incentive Program appeals process. Members may appeal within 30 days of the determination. Sources: 06_ambiguous_rebate_billing_adjustments.md; 02_incentive_rebate_programs.md.\n\nNote: SunGrid provides written notice at least 30 days before the first adjusted billing cycle. Source: 06_ambiguous_rebate_billing_adjustments.md.\n\nIf you\u2019d like, I can help you start the incentive appeal and check your notice timeline."
+        }
+      },
+      "at": "2026-10-03T18:41:24.161697+00:00"
+    }
+  ]
+}

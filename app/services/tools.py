@@ -5,6 +5,8 @@ import json
 from typing import Any
 
 from app.config import root_dir
+from app.llm.prompt import RETRIEVAL_TOOL
+from app.rag.retrieval import retrieve
 
 _STUB_PATH = root_dir() / "SunGrid Starter Kit" / "stub_tools.py"
 _SPEC = importlib.util.spec_from_file_location("sungrid_stub_tools", _STUB_PATH)
@@ -47,8 +49,11 @@ TOOLS: list[dict[str, Any]] = [
 ]
 
 
-def run_tool(name: str, arguments: dict[str, Any]) -> str:
+async def run_tool(name: str, arguments: dict[str, Any]) -> str:
     """Run one tool and return a JSON string the model can read."""
+    if name == RETRIEVAL_TOOL:
+        hits = await retrieve(str(arguments["query"]), list(arguments["categories"]))
+        return json.dumps(hits)
     if name != "check_rebate_eligibility":
         return json.dumps({"error": f"Unknown tool: {name}"})
     approved = arguments.get("installer_approved")

@@ -1,0 +1,8 @@
+We are not giving info eligibility criteria to main chat agent
+qdrant
+hybrid search - splade
+multiple queries
+reranking
+proper evaluation system 
+api + sse + streaming
+detailed logging and monitoring

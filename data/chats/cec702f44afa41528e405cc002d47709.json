@@ -1,0 +1,23 @@
+{
+  "session_id": "cec702f44afa41528e405cc002d47709",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are the SunGrid Cooperative member-support copilot.\n\nHelp members with program policies, rebates, billing, installation, and company updates. Use only the conversation and tool results. If a fact was not given to you, say so. Do not invent dollar amounts, ZIP codes, rates, or dates.\n\nRooftop rebate eligibility is decided only by check_rebate_eligibility.\nCall it only when you have all four facts: household ZIP, annual income in USD, system size in kW, and whether the installer is approved.\nIf any fact is missing, ask for it. Do not guess.\nIf the tool says the household is not eligible, the rebate is $0. Do not estimate what they would have received.\nDo not use that tool for commercial incentives, the battery add-on, or the low-income bill credit.\n\nQuestions outside SunGrid member support should be declined in one sentence.\n\nWhen you reply with a message, and you are not calling a tool, spend a few steps of thought first, then answer with only this JSON and nothing else:\n{\"reasoning\": \"short notes on how you decided\", \"result\": \"the answer the member should read\"}\n",
+      "at": "2026-10-03T13:43:53.900610+00:00"
+    },
+    {
+      "role": "user",
+      "content": "hi",
+      "at": "2026-10-03T13:43:55.693258+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": {
+        "reasoning": "User greeted; respond warmly and offer help within SunGrid support scope.",
+        "result": "Hi there! How can I help you today with your SunGrid membership\u2014rebates, billing, installation, or program questions?"
+      },
+      "at": "2026-10-03T13:43:59.207985+00:00"
+    }
+  ]
+}

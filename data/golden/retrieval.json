@@ -1,0 +1,35 @@
+[
+  {
+    "question": "What membership tiers does SunGrid offer?",
+    "categories": ["Program Policies"],
+    "relevant_chunks": [
+      {
+        "id": "01#0",
+        "source": "01_program_policies.md",
+        "section": "sungrid cooperative — member program policies > membership tiers"
+      }
+    ]
+  },
+  {
+    "question": "When are bills issued, and when does autopay charge?",
+    "categories": ["Billing & Account"],
+    "relevant_chunks": [
+      {
+        "id": "03#1",
+        "source": "03_billing_faqs.md",
+        "section": "sungrid cooperative — billing & account faqs > when are bills issued?"
+      }
+    ]
+  },
+  {
+    "question": "What is the rooftop rebate rate, and what is the cap?",
+    "categories": ["Incentive & Rebate Programs"],
+    "relevant_chunks": [
+      {
+        "id": "02#0",
+        "source": "02_incentive_rebate_programs.md",
+        "section": "sungrid cooperative — incentive & rebate programs > rooftop rebate program"
+      }
+    ]
+  }
+]

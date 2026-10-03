@@ -51,6 +51,45 @@ def load_messages(session_id: str) -> list[dict[str, Any]]:
     return payload["messages"]
 
 
+def list_sessions() -> list[dict[str, str]]:
+    """Newest saved chat first, labeled with the first member message."""
+    folder = chats_dir()
+    if not folder.is_dir():
+        return []
+    found: list[dict[str, str]] = []
+    for file_path in folder.glob("*.json"):
+        session = read_session(file_path)
+        if session is not None:
+            found.append(session)
+    found.sort(key=lambda item: item["started"], reverse=True)
+    return found
+
+
+def read_session(file_path: Path) -> dict[str, str] | None:
+    """One sidebar row, or nothing when the file is not a session."""
+    try:
+        payload = json.loads(file_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return None
+    session_id = str(payload.get("session_id") or "")
+    if not _SESSION_ID.fullmatch(session_id):
+        return None
+    messages = payload.get("messages")
+    if not isinstance(messages, list):
+        messages = []
+    preview = "Empty chat"
+    started = ""
+    for message in messages:
+        if not isinstance(message, dict):
+            continue
+        if not started and message.get("at"):
+            started = str(message["at"])
+        if message.get("role") == "user" and isinstance(message.get("content"), str):
+            preview = " ".join(message["content"].split())
+            break
+    return {"session_id": session_id, "preview": preview, "started": started}
+
+
 def path(session_id: str) -> Path:
     if not _SESSION_ID.fullmatch(session_id):
         raise ValueError("session_id must be a 32-character hex id.")

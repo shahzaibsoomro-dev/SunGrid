@@ -1,0 +1,15 @@
+{
+  "session_id": "f91dd693704343cea4e607bfd5a8e976",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hi",
+      "at": "2026-10-01T22:49:04.715264+00:00"
+    },
+    {
+      "role": "assistant",
+      "content": "Hi! How can I help you today?",
+      "at": "2026-10-01T22:49:08.725088+00:00"
+    }
+  ]
+}

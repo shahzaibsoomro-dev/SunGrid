@@ -2,5 +2,9 @@
 .venv/
 __pycache__/
 *.pyc
-data/vector_store/index.faiss
-data/chats/*.json
+*.egg-info/
+
+Preparation.md
+Assessment*.pdf
+z_roughwork/
+tests/

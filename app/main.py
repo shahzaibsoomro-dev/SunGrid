@@ -1,3 +1,8 @@
+"""Terminal chat. From the project folder, with the virtual environment active:
+
+    python main.py
+"""
+
 import asyncio
 import json
 
@@ -7,7 +12,7 @@ from app.config import get_env
 from app.llm.client import async_llm
 from app.llm.prompt import SYSTEM_PROMPT
 from app.services.chat_store import append_message, load_messages, session_path, start_session
-from app.services.tools import TOOLS, run_tool
+from app.services.tools import run_tool
 
 MAX_TOOL_ROUNDS = 3
 
@@ -33,43 +38,81 @@ async def run() -> None:
         messages = load_messages(session_id)
         try:
             for round_index in range(MAX_TOOL_ROUNDS + 1):
-                response = await async_llm(messages, model, tools=TOOLS)
-                if "reasoning" in response:
-                    assistant_message = {
-                        "role": "assistant",
-                        "content": {
-                            "reasoning": response["reasoning"],
-                            "result": response["result"],
-                        },
-                    }
-                    messages.append(assistant_message)
-                    append_message(session_id, assistant_message)
-                    print(f"\nReasoning: {assistant_message['content']['reasoning']}")
-                    print(f"Agent: {assistant_message['content']['result']}")
+                response = await async_llm(messages, model)
+                action = response["action"]
+                assistant_message = {
+                    "role": "assistant",
+                    "content": {
+                        "reasoning": response["reasoning"],
+                        "intent": response["intent"],
+                        "action": action,
+                    },
+                }
+                messages.append(assistant_message)
+                append_message(session_id, assistant_message)
+                show_block("Reasoning", response["reasoning"])
+                show_block("Intent", response["intent"])
+                if action["type"] == "response":
+                    show_block("Agent", action["text"])
                     break
-
-                messages.append(response)
-                append_message(session_id, response)
-                result = response["result"]
 
                 if round_index == MAX_TOOL_ROUNDS:
                     print("\nAgent: I stopped because the tool calls did not finish.")
                     break
 
-                for call in result:
-                    raw_arguments = call.get("arguments") or "{}"
-                    arguments = json.loads(raw_arguments) if isinstance(raw_arguments, str) else raw_arguments
-                    print(f"\nCalling {call['name']} {arguments}")
-                    tool_message = {
-                        "type": "function_call_output",
-                        "call_id": call["call_id"],
-                        "output": run_tool(call["name"], arguments),
-                    }
-                    print(f"Tool result: {tool_message['output']}")
-                    messages.append(tool_message)
-                    append_message(session_id, tool_message)
+                show_tool_call(action["name"], action["arguments"])
+                tool_message = {
+                    "role": "tool",
+                    "name": action["name"],
+                    "content": await run_tool(action["name"], action["arguments"]),
+                }
+                show_tool_result(tool_message["content"])
+                messages.append(tool_message)
+                append_message(session_id, tool_message)
         except (APIError, APIConnectionError, RuntimeError) as exc:
             print(f"\nThe model call failed: {exc}")
+
+
+def show_block(label: str, body: str) -> None:
+    """Print a labeled block, one stored line per row."""
+    print(f"\n{label}")
+    for line in str(body).splitlines() or [""]:
+        print(f"  {line}")
+
+
+def show_tool_call(name: str, arguments: dict[str, object]) -> None:
+    """Print a tool name and each argument on its own line."""
+    print(f"\nTool  {name}")
+    for key, value in arguments.items():
+        if isinstance(value, list):
+            value = ", ".join(str(item) for item in value)
+        lines = str(value).splitlines() or [""]
+        print(f"  {key}: {lines[0]}")
+        for line in lines[1:]:
+            print(f"  {line}")
+
+
+def show_tool_result(content: str) -> None:
+    """Print a tool result as chunks or as one field per line."""
+    print("\nResult")
+    try:
+        data = json.loads(content)
+    except json.JSONDecodeError:
+        for line in content.splitlines() or [""]:
+            print(f"  {line}")
+        return
+    if isinstance(data, list):
+        for index, item in enumerate(data, start=1):
+            print(f"\n  {index}. {item.get('source', '')}")
+            print(f"     {item.get('section', '')}")
+            for line in str(item.get("text", "")).splitlines():
+                print(f"     {line}")
+        return
+    if isinstance(data, dict):
+        for key, value in data.items():
+            print(f"  {key}: {value}")
+        return
+    print(f"  {data}")
 
 
 def main() -> None:

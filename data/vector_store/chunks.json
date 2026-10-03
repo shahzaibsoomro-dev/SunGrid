@@ -1,0 +1,842 @@
+[
+  {
+    "id": "01#0",
+    "source": "01_program_policies.md",
+    "section": "sungrid cooperative — member program policies > membership tiers",
+    "text": "membership tiers\nsungrid cooperative offers three membership tiers: community, household, and commercial. each tier determines voting rights at the annual cooperative meeting and access to shared solar capacity.\n\n- community tier: for members who do not own a rooftop suitable for panels. members buy a share of output from a shared community array.\n- household tier: for members installing rooftop solar on a primary residence.\n- commercial tier: for member businesses installing on-site generation above 25kw.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "01#1",
+    "source": "01_program_policies.md",
+    "section": "sungrid cooperative — member program policies > code of conduct for installers",
+    "text": "code of conduct for installers\nall installers contracted through sungrid must hold a valid state electrical license and complete sungrid's annual safety certification. installers found in violation of safety protocol on two or more jobs in a 12-month period are removed from the approved installer list.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "01#2",
+    "source": "01_program_policies.md",
+    "section": "sungrid cooperative — member program policies > grievance procedure",
+    "text": "grievance procedure\nmembers may file a grievance regarding service quality, billing disputes, or installer conduct through the member portal. grievances are reviewed by the cooperative board within 15 business days. this policy does not cover disputes about rebate eligibility, which are handled under the incentive program appeals process (see incentive & rebate programs document).",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "01#3",
+    "source": "01_program_policies.md",
+    "section": "sungrid cooperative — member program policies > data privacy",
+    "text": "data privacy\nmember energy usage data is retained for 24 months and is not shared with third parties except as required for rebate program verification (see incentive & rebate programs document) or by law.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "01#4",
+    "source": "01_program_policies.md",
+    "section": "sungrid cooperative — member program policies > tier transfers",
+    "text": "tier transfers\nmembers may request a tier change (e.g., community to household, upon installing a qualifying rooftop system) once per 12-month period. tier changes take effect on the first day of the next billing cycle and do not retroactively affect rebate eligibility for systems installed under a prior tier.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "01#5",
+    "source": "01_program_policies.md",
+    "section": "sungrid cooperative — member program policies > annual meeting attendance",
+    "text": "annual meeting attendance\nall members in good standing may attend the annual cooperative meeting regardless of tier, though voting weight and eligibility to hold board positions vary by tier as described in the cooperative governance & voting rights document. meeting notices are sent at least 30 days in advance via the member portal and registered email.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "02#0",
+    "source": "02_incentive_rebate_programs.md",
+    "section": "sungrid cooperative — incentive & rebate programs > rooftop rebate program",
+    "text": "rooftop rebate program\nhousehold-tier members installing a new rooftop system are eligible for a rebate of $0.40/watt, capped at $4,000 per household, subject to the following eligibility rules:\n\n- system size must be between 3kw and 10kw.\n- household must be within the sungrid service region (see approved zip code list, appendix a — not included in this excerpt).\n- household adjusted gross income must fall below the regional threshold published annually by the cooperative board.\n- systems installed by non-approved installers are not eligible, regardless of other criteria.\n\nincome threshold and system size are hard eligibility requirements checked before any rebate amount is calculated — a household that fails either check receives no rebate, regardless of how favorable other factors are.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "02#1",
+    "source": "02_incentive_rebate_programs.md",
+    "section": "sungrid cooperative — incentive & rebate programs > commercial incentive program",
+    "text": "commercial incentive program\ncommercial-tier members installing systems above 25kw are eligible for a separate performance-based incentive, paid quarterly based on metered output rather than a one-time rebate. commercial incentive requests are reviewed by sungrid's carbon markets desk (a separate approval workflow from the rooftop rebate program).",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "02#2",
+    "source": "02_incentive_rebate_programs.md",
+    "section": "sungrid cooperative — incentive & rebate programs > appeals process",
+    "text": "appeals process\nmembers disputing a rebate eligibility determination may appeal within 30 days of the determination. appeals are reviewed by the incentive program committee, separate from the general member grievance procedure described in the program policies document.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "02#3",
+    "source": "02_incentive_rebate_programs.md",
+    "section": "sungrid cooperative — incentive & rebate programs > program funding status",
+    "text": "program funding status\nthe rooftop rebate program is funded on a rolling annual budget. when the annual budget is exhausted, new applications are placed on a waitlist until the following fiscal year's budget is released.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "02#4",
+    "source": "02_incentive_rebate_programs.md",
+    "section": "sungrid cooperative — incentive & rebate programs > interaction with other incentive programs",
+    "text": "interaction with other incentive programs\na household participating in the rooftop rebate program may also apply separately for the battery storage add-on incentive, provided the rooftop system has already received a favorable eligibility determination. households may not apply for the battery storage add-on incentive independently of an approved rooftop rebate program application. the low-income bill credit program, by contrast, has no dependency on rooftop rebate status and may be applied for independently.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "02#5",
+    "source": "02_incentive_rebate_programs.md",
+    "section": "sungrid cooperative — incentive & rebate programs > documentation requirements",
+    "text": "documentation requirements\napplicants must submit proof of installer approval status, a copy of the interconnection application filed with the local utility, and a signed income attestation. incomplete applications are held in a pending queue for up to 15 business days before being automatically closed; applicants must reapply after closure.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "03#0",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > how is my monthly bill calculated?",
+    "text": "how is my monthly bill calculated?\nyour bill combines a fixed cooperative membership fee with variable charges based on net metered usage.\n\ncommunity: monthly membership fee $12, net metering rate $0.09/kwh. household: monthly membership fee $8, net metering rate $0.07/kwh credit. commercial: monthly membership fee $150, net metering rate negotiated per contract.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "03#1",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > when are bills issued?",
+    "text": "when are bills issued?\nbills are issued on the 1st of each month and are due within 21 days. members enrolled in autopay are charged on the 15th.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "03#2",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > what happens if i miss a payment?",
+    "text": "what happens if i miss a payment?\naccounts more than 45 days past due are flagged for a service review. sungrid does not disconnect community-tier members from shared array access for billing disputes; disconnection policy applies only to non-payment exceeding 90 days.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "03#3",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > can i update my payment method?",
+    "text": "can i update my payment method?\nyes, through the member portal under account settings. changes take effect on the next billing cycle.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "03#4",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > my rebate hasn't appeared on my bill yet — who do i contact?",
+    "text": "my rebate hasn't appeared on my bill yet — who do i contact?\nrebate disbursement timing is governed by the incentive & rebate programs process, not the standard billing cycle. contact the incentive program committee directly rather than general billing support.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "03#5",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > what is the annual true-up?",
+    "text": "what is the annual true-up?\nhousehold-tier and community-tier members on net metering undergo an annual true-up each march, reconciling any excess credits or debits accumulated over the prior 12 months. members with excess credits at true-up receive a bill credit at the applicable net metering rate; members with a net debit are billed the difference at the standard (non-net-metered) rate for their tier.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "03#6",
+    "source": "03_billing_faqs.md",
+    "section": "sungrid cooperative — billing & account faqs > can i dispute a charge on my bill?",
+    "text": "can i dispute a charge on my bill?\nbilling disputes not related to rebate eligibility are handled through the member grievance procedure described in the program policies document, and must be filed within 60 days of the disputed charge appearing on a statement.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "04#0",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > site assessment",
+    "text": "site assessment\nbefore installation, an approved installer conducts a shading and structural assessment. roofs with more than 20% annual shading are generally not recommended for standard panel layouts; micro-inverter configurations may be proposed as an alternative in partial-shading cases.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "04#1",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > inverter types",
+    "text": "inverter types\nsungrid-approved installations use either string inverters or micro-inverters. micro-inverters are required for any roof section with mixed orientation (e.g., east/west split roofs) to avoid mismatch losses.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "04#2",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > interconnection process",
+    "text": "interconnection process\nafter installation, the installer submits an interconnection application to the local utility on the member's behalf. utility approval typically takes 10–20 business days depending on jurisdiction. systems may not be energized until utility approval is received.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "04#3",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > monitoring & maintenance",
+    "text": "monitoring & maintenance\nall installations include a monitoring dashboard accessible via the member portal. members should report inverter fault codes to their installer directly; sungrid support does not diagnose hardware faults but can confirm whether a system's reported output is consistent with expected generation for its size and location.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "04#4",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > common fault codes",
+    "text": "common fault codes\n- e01: grid voltage out of range — typically utility-side, not a system fault.\n- e07: ground fault detected — requires installer inspection before re-energizing.\n- e12: communication loss between inverter and monitoring gateway — often resolved by a gateway reset.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "04#5",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > roof suitability",
+    "text": "roof suitability\nin addition to shading, installers assess roof age and structural load capacity. roofs with less than 10 years of remaining expected life are generally not approved for installation without a signed waiver, since panel removal and reinstallation for roof replacement is not covered under any sungrid program.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "04#6",
+    "source": "04_technical_installation_guidance.md",
+    "section": "sungrid cooperative — technical & installation guidance > seasonal performance expectations",
+    "text": "seasonal performance expectations\nexpected generation varies seasonally; installers provide a month-by-month generation estimate as part of the site assessment. actual generation more than 20% below the seasonal estimate for two consecutive months should be reported through the monitoring dashboard for review, distinct from single fault-code events which should go directly to the installer.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "05#0",
+    "source": "05_company_updates.md",
+    "section": "sungrid cooperative — company updates > q2 cooperative newsletter highlights",
+    "text": "q2 cooperative newsletter highlights\nthis quarter, sungrid crossed 4,200 active household-tier installations across the service region, with the shared community array reaching full subscription for the first time since launch.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "05#1",
+    "source": "05_company_updates.md",
+    "section": "sungrid cooperative — company updates > new board members",
+    "text": "new board members\ntwo new members joined the cooperative board this quarter, both elected by household-tier members during the spring general meeting.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "05#2",
+    "source": "05_company_updates.md",
+    "section": "sungrid cooperative — company updates > upcoming changes",
+    "text": "upcoming changes\nstarting next fiscal year, sungrid plans to introduce a fourth membership tier for multi-family housing developments. details on eligibility and rebate treatment for this tier are expected to be published closer to launch and are not yet finalized — members should not rely on this document for eligibility guidance until the formal policy is released.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "05#3",
+    "source": "05_company_updates.md",
+    "section": "sungrid cooperative — company updates > community array expansion",
+    "text": "community array expansion\ndue to reaching full subscription, the cooperative board approved funding for a second shared community array, expected to begin construction next year.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "05#4",
+    "source": "05_company_updates.md",
+    "section": "sungrid cooperative — company updates > regional recognition",
+    "text": "regional recognition\nsungrid was recognized this quarter by a regional clean-energy association for cooperative-model innovation. the recognition specifically cited the shared community array model as a replicable approach for members without suitable rooftops.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "05#5",
+    "source": "05_company_updates.md",
+    "section": "sungrid cooperative — company updates > staffing update",
+    "text": "staffing update\nthe cooperative added two new member-support staff this quarter to reduce grievance and support-ticket response times, following member feedback collected in the prior quarter's satisfaction survey.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "06#0",
+    "source": "06_ambiguous_rebate_billing_adjustments.md",
+    "section": "sungrid cooperative — rebate refund & billing adjustment notice",
+    "text": "this document covers what happens when a previously approved rooftop rebate is later reversed due to an eligibility error discovered after disbursement (e.g., an installer later found to be non-approved, or a household later found to exceed the income threshold).",
+    "section_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "06#1",
+    "source": "06_ambiguous_rebate_billing_adjustments.md",
+    "section": "sungrid cooperative — rebate refund & billing adjustment notice > reversal process",
+    "text": "reversal process\nwhen a rebate is reversed, sungrid issues a billing adjustment to recover the disbursed amount. the adjustment is applied over up to 6 monthly billing cycles rather than as a single lump charge, to reduce hardship on the affected household.",
+    "section_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "06#2",
+    "source": "06_ambiguous_rebate_billing_adjustments.md",
+    "section": "sungrid cooperative — rebate refund & billing adjustment notice > which team handles this?",
+    "text": "which team handles this?\nbecause this scenario touches both rebate eligibility (a determination made under the incentive & rebate programs process) and monthly billing mechanics (governed by standard billing cycle rules), it does not sit cleanly under either the incentive & rebate programs document or the billing & account faqs document alone. in practice, the incentive program committee makes the reversal determination, and the billing team executes the adjustment schedule.",
+    "section_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "06#3",
+    "source": "06_ambiguous_rebate_billing_adjustments.md",
+    "section": "sungrid cooperative — rebate refund & billing adjustment notice > member notification",
+    "text": "member notification\naffected members are notified in writing at least 30 days before the first adjusted billing cycle and may appeal the reversal determination through the incentive program appeals process described in the incentive & rebate programs document — not through the general member grievance procedure.",
+    "section_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "06#4",
+    "source": "06_ambiguous_rebate_billing_adjustments.md",
+    "section": "sungrid cooperative — rebate refund & billing adjustment notice > interaction with autopay",
+    "text": "interaction with autopay\nmembers enrolled in autopay have adjustment amounts applied automatically to their scheduled charge; members on manual payment must acknowledge the revised amount through the member portal before the next billing cycle, following the same autopay-failure handling process described in the billing & account faqs document for other payment issues.",
+    "section_categories": [
+      "Incentive & Rebate Programs",
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "07#0",
+    "source": "07_installer_certification.md",
+    "section": "sungrid cooperative — installer certification & renewal > certification requirements",
+    "text": "certification requirements\ninstallers must hold a valid state electrical license and complete sungrid's safety certification course before being added to the approved installer list. certification is specific to the installer license holder, not the installing company as a whole — each individual electrician working on sungrid jobs must be separately certified.",
+    "section_categories": [
+      "Program Policies",
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "07#1",
+    "source": "07_installer_certification.md",
+    "section": "sungrid cooperative — installer certification & renewal > annual renewal",
+    "text": "annual renewal\nsafety certification must be renewed annually. installers who allow certification to lapse are automatically removed from the approved installer list until renewal is complete; any jobs completed during a lapsed period are treated as performed by a non-approved installer for rebate eligibility purposes, regardless of the installer's certification history before the lapse.",
+    "section_categories": [
+      "Program Policies",
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Program Policies",
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "07#2",
+    "source": "07_installer_certification.md",
+    "section": "sungrid cooperative — installer certification & renewal > renewal process",
+    "text": "renewal process\nrenewal requires a short refresher course and a passing score on a safety knowledge assessment. sungrid sends renewal reminders 60 and 30 days before an installer's certification expires.",
+    "section_categories": [
+      "Program Policies",
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "07#3",
+    "source": "07_installer_certification.md",
+    "section": "sungrid cooperative — installer certification & renewal > relationship to safety violations",
+    "text": "relationship to safety violations\ncertification renewal is separate from the safety-violation removal process described in the program policies document's code of conduct section. an installer can be in good renewal standing and still be removed from the approved list for repeated safety violations.",
+    "section_categories": [
+      "Program Policies",
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "08#0",
+    "source": "08_governance_voting.md",
+    "section": "sungrid cooperative — governance & voting rights > voting eligibility",
+    "text": "voting eligibility\nvoting rights at the annual cooperative meeting are tied to membership tier. household and commercial-tier members receive one vote per account. community-tier members receive one vote per account regardless of the size of their shared-array subscription.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "08#1",
+    "source": "08_governance_voting.md",
+    "section": "sungrid cooperative — governance & voting rights > board elections",
+    "text": "board elections\nboard seats are elected by household-tier members during the spring general meeting, on a staggered schedule with roughly one-third of seats up for election each year. candidates must have been members in good standing for at least 12 months prior to nomination.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "08#2",
+    "source": "08_governance_voting.md",
+    "section": "sungrid cooperative — governance & voting rights > proxy voting",
+    "text": "proxy voting\nmembers unable to attend the annual meeting in person may assign a proxy vote to another member in good standing through the member portal, no later than 5 business days before the meeting.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "08#3",
+    "source": "08_governance_voting.md",
+    "section": "sungrid cooperative — governance & voting rights > quorum requirements",
+    "text": "quorum requirements\na quorum of 15% of eligible voting members (in person or by proxy) is required for any binding vote at the annual meeting. if quorum is not met, votes are deferred to a follow-up meeting held within 30 days.",
+    "section_categories": [
+      "Program Policies"
+    ],
+    "chunk_categories": [
+      "Program Policies"
+    ]
+  },
+  {
+    "id": "09#0",
+    "source": "09_battery_storage_incentive.md",
+    "section": "sungrid cooperative — battery storage add-on incentive > overview",
+    "text": "overview\nhousehold-tier members who have already received a favorable eligibility determination under the rooftop rebate program may apply for an additional battery storage add-on incentive when installing battery storage alongside their rooftop system.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "09#1",
+    "source": "09_battery_storage_incentive.md",
+    "section": "sungrid cooperative — battery storage add-on incentive > incentive structure",
+    "text": "incentive structure\nthe battery storage add-on incentive is paid at $0.15 per watt-hour of usable storage capacity, capped at $1,500 per household. this is a separate calculation from the rooftop rebate program's $0.40/watt rebate and does not count against the $4,000 rooftop rebate cap.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "09#2",
+    "source": "09_battery_storage_incentive.md",
+    "section": "sungrid cooperative — battery storage add-on incentive > eligibility",
+    "text": "eligibility\n- the associated rooftop system must have an approved rooftop rebate program determination on file.\n- battery installation must be performed by a sungrid-approved installer meeting the certification requirements described in the installer certification & renewal document.\n- battery systems must meet the technical requirements described in the technical & installation guidance materials for battery storage.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "09#3",
+    "source": "09_battery_storage_incentive.md",
+    "section": "sungrid cooperative — battery storage add-on incentive > standalone battery installations",
+    "text": "standalone battery installations\nbattery storage installed without an accompanying rooftop solar system is not eligible for this incentive. members interested in standalone battery storage should contact sungrid support to discuss options outside the incentive program.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "10#0",
+    "source": "10_low_income_bill_credit.md",
+    "section": "sungrid cooperative — low-income bill credit program > overview",
+    "text": "overview\nthe low-income bill credit program provides a recurring monthly credit to qualifying members' bills, rather than a one-time rebate. it is administered independently of the rooftop rebate program and does not require the member to have solar installed.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "10#1",
+    "source": "10_low_income_bill_credit.md",
+    "section": "sungrid cooperative — low-income bill credit program > eligibility",
+    "text": "eligibility\nmembers qualify based on household income falling below 200% of the regional low-income threshold, verified annually. eligibility applies to all membership tiers, including community-tier members without rooftop solar.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "10#2",
+    "source": "10_low_income_bill_credit.md",
+    "section": "sungrid cooperative — low-income bill credit program > credit amount",
+    "text": "credit amount\nqualifying households receive a flat $25 monthly credit applied automatically to their bill. the credit appears as a separate line item and does not affect net metering calculations.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "10#3",
+    "source": "10_low_income_bill_credit.md",
+    "section": "sungrid cooperative — low-income bill credit program > recertification",
+    "text": "recertification\nmembers must recertify income eligibility annually. failure to recertify results in the credit being paused (not permanently revoked) until recertification is completed; paused credits are not retroactively reinstated for months missed during the lapse.",
+    "section_categories": [
+      "Incentive & Rebate Programs"
+    ],
+    "chunk_categories": [
+      "Incentive & Rebate Programs"
+    ]
+  },
+  {
+    "id": "11#0",
+    "source": "11_net_metering_trueup.md",
+    "section": "sungrid cooperative — net metering true-up details > what is true-up?",
+    "text": "what is true-up?\nnet metering true-up is the annual reconciliation of energy credits and debits accumulated by household and community-tier members over a 12-month cycle ending each march, as referenced briefly in the billing & account faqs document.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "11#1",
+    "source": "11_net_metering_trueup.md",
+    "section": "sungrid cooperative — net metering true-up details > calculation",
+    "text": "calculation\nduring true-up, sungrid compares total energy exported to the grid against total energy consumed over the cycle. members with net excess generation receive a credit at their tier's net metering rate; members with net consumption above generation are billed the shortfall at the standard (non-net-metered) rate.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "11#2",
+    "source": "11_net_metering_trueup.md",
+    "section": "sungrid cooperative — net metering true-up details > timing and notification",
+    "text": "timing and notification\ntrue-up statements are issued within 10 business days of the march billing cycle close. any credit or charge resulting from true-up is applied to the next regular bill rather than issued as a separate transaction.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "11#3",
+    "source": "11_net_metering_trueup.md",
+    "section": "sungrid cooperative — net metering true-up details > mid-year enrollment",
+    "text": "mid-year enrollment\nmembers who enroll in net metering partway through the 12-month cycle undergo a prorated true-up based on their actual enrollment period, not a full 12-month calculation.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "12#0",
+    "source": "12_autopay_failure_policy.md",
+    "section": "sungrid cooperative — autopay failure & retry policy > what happens when autopay fails?",
+    "text": "what happens when autopay fails?\nif a scheduled autopay charge fails (e.g., insufficient funds, expired card), sungrid retries the charge twice more over the following 5 business days before treating the account as manual-pay for that billing cycle.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "12#1",
+    "source": "12_autopay_failure_policy.md",
+    "section": "sungrid cooperative — autopay failure & retry policy > notifications",
+    "text": "notifications\nmembers are notified by email and in the member portal after the first failed attempt, with instructions to update their payment method. a second notification is sent if the retry also fails.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "12#2",
+    "source": "12_autopay_failure_policy.md",
+    "section": "sungrid cooperative — autopay failure & retry policy > relationship to late payment policy",
+    "text": "relationship to late payment policy\nan account that reverts to manual-pay status due to autopay failure is still subject to the standard 45-day and 90-day late-payment timelines described in the billing & account faqs document, calculated from the original due date, not from the date autopay failed.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "12#3",
+    "source": "12_autopay_failure_policy.md",
+    "section": "sungrid cooperative — autopay failure & retry policy > re-enrolling in autopay",
+    "text": "re-enrolling in autopay\nmembers can re-enroll in autopay at any time through the member portal under account settings. re-enrollment takes effect on the next billing cycle, consistent with standard payment method change timing.",
+    "section_categories": [
+      "Billing & Account"
+    ],
+    "chunk_categories": [
+      "Billing & Account"
+    ]
+  },
+  {
+    "id": "13#0",
+    "source": "13_battery_storage_installation.md",
+    "section": "sungrid cooperative — battery storage installation requirements > compatible configurations",
+    "text": "compatible configurations\nbattery storage systems must be installed alongside a compatible inverter configuration. systems using micro-inverters require a battery unit with ac-coupling support; systems using a string inverter may use either ac- or dc-coupled battery configurations, per the inverter guidance in the technical & installation guidance document.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "13#1",
+    "source": "13_battery_storage_installation.md",
+    "section": "sungrid cooperative — battery storage installation requirements > fire and safety code",
+    "text": "fire and safety code\nbattery units must be installed with a minimum 3-foot clearance from doors, windows, and combustible materials, per sungrid's adopted fire code standard. indoor installations require a dedicated ventilation assessment by the installer prior to energizing.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "13#2",
+    "source": "13_battery_storage_installation.md",
+    "section": "sungrid cooperative — battery storage installation requirements > capacity sizing",
+    "text": "capacity sizing\nsungrid recommends sizing battery capacity to cover 50-100% of a household's average daily consumption, based on the site assessment generation data. oversized systems beyond 150% of average daily consumption are permitted but are not eligible for additional incentive consideration beyond the standard battery storage add-on incentive cap.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "13#3",
+    "source": "13_battery_storage_installation.md",
+    "section": "sungrid cooperative — battery storage installation requirements > commissioning",
+    "text": "commissioning\nbattery systems undergo a separate commissioning test from the solar array itself, verifying charge/discharge behavior and grid-disconnect (islanding) safety response before being cleared for full operation.",
+    "section_categories": [
+      "Technical/Installation Guidance"
+    ],
+    "chunk_categories": [
+      "Technical/Installation Guidance"
+    ]
+  },
+  {
+    "id": "14#0",
+    "source": "14_annual_impact_report.md",
+    "section": "sungrid cooperative — annual impact report summary > membership growth",
+    "text": "membership growth\nsungrid ended the fiscal year with just over 5,000 members across all tiers, up from approximately 3,600 the prior year, driven primarily by household-tier growth following the rooftop rebate program's expansion.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "14#1",
+    "source": "14_annual_impact_report.md",
+    "section": "sungrid cooperative — annual impact report summary > installed capacity",
+    "text": "installed capacity\ntotal installed rooftop and community-array capacity across the cooperative reached 38 megawatts by fiscal year end, roughly double the prior year's total.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "14#2",
+    "source": "14_annual_impact_report.md",
+    "section": "sungrid cooperative — annual impact report summary > estimated emissions offset",
+    "text": "estimated emissions offset\nbased on regional grid emissions factors, sungrid estimates its members' combined generation offset approximately 21,000 metric tons of co2-equivalent emissions over the fiscal year.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  },
+  {
+    "id": "14#3",
+    "source": "14_annual_impact_report.md",
+    "section": "sungrid cooperative — annual impact report summary > program participation",
+    "text": "program participation\nroughly 60% of eligible household-tier members who installed solar during the fiscal year also received a rooftop rebate program disbursement; the remainder either did not apply, were denied under eligibility rules, or have applications still pending review.",
+    "section_categories": [
+      "Company Updates"
+    ],
+    "chunk_categories": [
+      "Company Updates"
+    ]
+  }
+]

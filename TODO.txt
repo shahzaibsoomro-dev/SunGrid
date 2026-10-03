@@ -1,0 +1,16 @@
+code structure
+
+set up core stuff
+
+test llm and embedding model
+
+design structure for output of chat agent
+
+design meta data for vector search
+
+ingestion pipeline
+retreival pipeline
+
+testing tool calling and edge cases
+
+prepare documentation
