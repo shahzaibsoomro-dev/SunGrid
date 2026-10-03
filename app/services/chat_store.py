@@ -19,45 +19,45 @@ def chats_dir() -> Path:
 
 def session_path(session_id: str) -> Path:
     """Local JSON file for one agent session."""
-    return _path(session_id)
+    return path(session_id)
 
 
 def start_session() -> str:
     """Create an empty session file and return its id."""
     session_id = uuid.uuid4().hex
-    _write(_path(session_id), {"session_id": session_id, "messages": []})
+    write(path(session_id), {"session_id": session_id, "messages": []})
     return session_id
 
 
 def append_message(session_id: str, message: dict[str, Any]) -> None:
     """Append one turn as given, plus the time it was saved."""
-    path = _path(session_id)
-    if not path.is_file():
+    file_path = path(session_id)
+    if not file_path.is_file():
         raise FileNotFoundError(f"No chat file for session {session_id}.")
 
     stored = dict(message)
     stored["at"] = datetime.now(timezone.utc).isoformat()
-    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload = json.loads(file_path.read_text(encoding="utf-8"))
     payload["messages"].append(stored)
-    _write(path, payload)
+    write(file_path, payload)
 
 
 def load_messages(session_id: str) -> list[dict[str, Any]]:
     """Return the saved turns for one agent session, oldest first."""
-    path = _path(session_id)
-    if not path.is_file():
+    file_path = path(session_id)
+    if not file_path.is_file():
         raise FileNotFoundError(f"No chat file for session {session_id}.")
-    payload = json.loads(path.read_text(encoding="utf-8"))
+    payload = json.loads(file_path.read_text(encoding="utf-8"))
     return payload["messages"]
 
 
-def _path(session_id: str) -> Path:
+def path(session_id: str) -> Path:
     if not _SESSION_ID.fullmatch(session_id):
         raise ValueError("session_id must be a 32-character hex id.")
     return chats_dir() / f"{session_id}.json"
 
 
-def _write(path: Path, payload: dict[str, object]) -> None:
+def write(path: Path, payload: dict[str, object]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(".json.tmp")
     temporary.write_text(json.dumps(payload, indent=2), encoding="utf-8")

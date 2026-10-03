@@ -10,7 +10,14 @@ class MessageViewTest(unittest.TestCase):
         messages = [
             {"role": "system", "content": "You are the SunGrid copilot.", "at": "t"},
             {"role": "user", "content": "Am I eligible?", "at": "t"},
-            {"result": "Yes. The rebate is $2,000.", "at": "t"},
+            {
+                "role": "assistant",
+                "content": {
+                    "reasoning": "The tool said eligible.",
+                    "result": "Yes. The rebate is $2,000.",
+                },
+                "at": "t",
+            },
             {
                 "result": [
                     {
@@ -35,7 +42,10 @@ class MessageViewTest(unittest.TestCase):
             [
                 {"role": "system", "content": "You are the SunGrid copilot."},
                 {"role": "user", "content": "Am I eligible?"},
-                {"role": "assistant", "content": "Yes. The rebate is $2,000."},
+                {
+                    "role": "assistant",
+                    "content": '{"reasoning": "The tool said eligible.", "result": "Yes. The rebate is $2,000."}',
+                },
                 {
                     "type": "function_call",
                     "call_id": "call_1",

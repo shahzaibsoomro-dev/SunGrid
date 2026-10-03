@@ -7,11 +7,11 @@ from unittest.mock import AsyncMock, MagicMock, patch
 from app.llm.client import async_llm, async_llm_stream, llm
 
 
-def _messages() -> list[dict[str, str]]:
+def messages() -> list[dict[str, str]]:
     return [{"role": "user", "content": "Hi", "at": "2026-01-01T00:00:00+00:00"}]
 
 
-def _response() -> MagicMock:
+def response() -> MagicMock:
     response = MagicMock()
     response.model_dump.return_value = {
         "id": "resp_1",
@@ -21,7 +21,12 @@ def _response() -> MagicMock:
             {
                 "type": "message",
                 "role": "assistant",
-                "content": [{"type": "output_text", "text": "Paris"}],
+                "content": [
+                    {
+                        "type": "output_text",
+                        "text": '{"reasoning": "named city", "result": "Paris"}',
+                    }
+                ],
             }
         ],
     }
@@ -31,13 +36,14 @@ def _response() -> MagicMock:
 class LlmClientTest(unittest.IsolatedAsyncioTestCase):
     def test_llm_sends_messages_model_and_kwargs(self) -> None:
         client = MagicMock()
-        client.responses.create.return_value = _response()
+        client.responses.create.return_value = response()
 
         with patch("app.llm.client.OpenAI", return_value=client):
-            response = llm(_messages(), "gpt-5", temperature=0)
+            reply = llm(messages(), "gpt-5", temperature=0)
 
         sent = client.responses.create.call_args.kwargs
-        self.assertEqual(response["result"], "Paris")
+        self.assertEqual(reply["reasoning"], "named city")
+        self.assertEqual(reply["result"], "Paris")
         self.assertEqual(sent["model"], "gpt-5")
         self.assertEqual(sent["input"], [{"role": "user", "content": "Hi"}])
         self.assertEqual(sent["temperature"], 0)
@@ -46,13 +52,14 @@ class LlmClientTest(unittest.IsolatedAsyncioTestCase):
 
     async def test_async_llm_returns_the_full_reply(self) -> None:
         client = AsyncMock()
-        client.responses.create.return_value = _response()
+        client.responses.create.return_value = response()
 
         with patch("app.llm.client.AsyncOpenAI", return_value=client):
-            response = await async_llm(_messages(), "gpt-5", temperature=0.2)
+            reply = await async_llm(messages(), "gpt-5", temperature=0.2)
 
         sent = client.responses.create.await_args.kwargs
-        self.assertEqual(response["result"], "Paris")
+        self.assertEqual(reply["reasoning"], "named city")
+        self.assertEqual(reply["result"], "Paris")
         self.assertEqual(sent["model"], "gpt-5")
         self.assertEqual(sent["temperature"], 0.2)
         self.assertNotIn("stream", sent)
@@ -77,7 +84,7 @@ class LlmClientTest(unittest.IsolatedAsyncioTestCase):
         client.responses.create.return_value = response
 
         with patch("app.llm.client.AsyncOpenAI", return_value=client):
-            returned = await async_llm(_messages(), "gpt-5", tools=[])
+            returned = await async_llm(messages(), "gpt-5", tools=[])
 
         self.assertEqual(
             returned["result"],
@@ -103,7 +110,7 @@ class LlmClientTest(unittest.IsolatedAsyncioTestCase):
 
         with patch("app.llm.client.AsyncOpenAI", return_value=client):
             with self.assertRaises(RuntimeError) as raised:
-                await async_llm(_messages(), "gpt-5")
+                await async_llm(messages(), "gpt-5")
 
         self.assertIn("failed to generate", str(raised.exception))
 
@@ -117,7 +124,7 @@ class LlmClientTest(unittest.IsolatedAsyncioTestCase):
         client.responses.create.return_value = events()
 
         with patch("app.llm.client.AsyncOpenAI", return_value=client):
-            pieces = [delta async for delta in async_llm_stream(_messages(), "gpt-5")]
+            pieces = [delta async for delta in async_llm_stream(messages(), "gpt-5")]
 
         sent = client.responses.create.await_args.kwargs
         self.assertEqual(pieces, ["Pa", "ris"])

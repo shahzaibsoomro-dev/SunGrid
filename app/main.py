@@ -34,16 +34,23 @@ async def run() -> None:
         try:
             for round_index in range(MAX_TOOL_ROUNDS + 1):
                 response = await async_llm(messages, model, tools=TOOLS)
+                if "reasoning" in response:
+                    assistant_message = {
+                        "role": "assistant",
+                        "content": {
+                            "reasoning": response["reasoning"],
+                            "result": response["result"],
+                        },
+                    }
+                    messages.append(assistant_message)
+                    append_message(session_id, assistant_message)
+                    print(f"\nReasoning: {assistant_message['content']['reasoning']}")
+                    print(f"Agent: {assistant_message['content']['result']}")
+                    break
+
                 messages.append(response)
                 append_message(session_id, response)
                 result = response["result"]
-
-                if isinstance(result, str):
-                    if not result:
-                        print("\nThe model returned an empty reply.")
-                        break
-                    print(f"\nAgent: {result}")
-                    break
 
                 if round_index == MAX_TOOL_ROUNDS:
                     print("\nAgent: I stopped because the tool calls did not finish.")

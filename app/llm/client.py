@@ -14,8 +14,9 @@ Pass only settings the chosen model accepts. A model that does not support
 one of these will reject the request. async_llm_stream always sets stream=True,
 so do not pass stream yourself.
 
-llm and async_llm return {"result": ...}.
-A text reply is a string. A tool call is a list of function_call objects.
+llm and async_llm return JSON.
+A text reply is {"reasoning": "...", "result": "..."}.
+A tool call is {"result": [function_call, ...]}.
 The caller tells those two shapes apart.
 
 A failed request raises. Connection and HTTP errors come from the SDK.
@@ -24,6 +25,7 @@ object, raises RuntimeError with the API message. Nothing is returned in
 that case, so the caller does not save it.
 """
 
+import json
 from collections.abc import AsyncIterator
 from openai import AsyncOpenAI, OpenAI
 from app.config import get_env
@@ -31,7 +33,7 @@ from app.llm.messages import to_llm_input
 from typing import Any
 
 
-def _response_json(response: Any) -> dict[str, Any]:
+def response_json(response: Any) -> dict[str, Any]:
     """Return a text reply as a string, or tool calls as a list."""
     data = response.model_dump(mode="json")
     status = data.get("status")
@@ -61,7 +63,18 @@ def _response_json(response: Any) -> dict[str, Any]:
         for block in item.get("content") or []:
             if block.get("type") == "output_text" and block.get("text"):
                 parts.append(block["text"])
-    return {"result": "".join(parts).strip()}
+    return assistant_reply("".join(parts).strip())
+
+
+def assistant_reply(text: str) -> dict[str, str]:
+    """Read the required {"reasoning", "result"} JSON from a text reply."""
+    try:
+        data = json.loads(text)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError("Model reply was not JSON.") from exc
+    if not isinstance(data, dict) or "reasoning" not in data or "result" not in data:
+        raise RuntimeError('Model reply must be {"reasoning": "...", "result": "..."}.')
+    return {"reasoning": str(data["reasoning"]), "result": str(data["result"])}
 
 
 def llm(messages: list[dict[str, Any]], model: str, **kwargs: Any) -> dict[str, Any]:
@@ -69,7 +82,7 @@ def llm(messages: list[dict[str, Any]], model: str, **kwargs: Any) -> dict[str, 
     client = OpenAI(base_url=get_env("OPENAI_API_BASE"), api_key=get_env("OPENAI_API_KEY"))
     try:
         response = client.responses.create(model=model, input=to_llm_input(messages), **kwargs)
-        return _response_json(response)
+        return response_json(response)
     finally:
         client.close()
 
@@ -79,7 +92,7 @@ async def async_llm(messages: list[dict[str, Any]], model: str, **kwargs: Any) -
     client = AsyncOpenAI(base_url=get_env("OPENAI_API_BASE"), api_key=get_env("OPENAI_API_KEY"))
     try:
         response = await client.responses.create(model=model, input=to_llm_input(messages), **kwargs)
-        return _response_json(response)
+        return response_json(response)
     finally:
         await client.close()
 
